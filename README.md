@@ -1,9 +1,23 @@
-# vue-learning
+# composite avatar
 
-Some demos to delve into vue.
+Simply use canvas to make composite avatars.
 
-## Demos
+![screenshot-1](images/screenshot-1.png)
 
-- [vue-reactivity-simple](https://github.com/huxinsen/vue-learning/tree/vue-reactivity-simple)
+![screenshot-2](images/screenshot-2.png)
 
-- [vuex-simple](https://github.com/huxinsen/vue-learning/tree/vuex-simple)
+## Note
+
+If you encounter the following error with Chrome, you may want to try [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb), which serves web pages from a local folder using HTTP.
+
+```
+Uncaught DOMException: Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported.
+```
+
+Or install `http-server` globally using node's package manager:
+
+```
+npm install -g http-server
+```
+
+Then simply run `http-server` in this project directory.

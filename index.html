@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>composite-avatar</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img src="./images/logo.png" class="logo" alt="logo" />
+      </div>
+      <div class="center">
+        <button id="left" class="control-btn control-btn_last"></button>
+        <div class="images">
+          <img
+            src="./images/avatar.jpg"
+            id="avatar"
+            class="image"
+            alt="avatar"
+          />
+          <img
+            src="./images/happy.png"
+            id="avatar-wrapper"
+            class="image"
+            alt="avatar wrapper"
+          />
+        </div>
+        <button id="right" class="control-btn control-btn_next"></button>
+      </div>
+      <div class="footer">
+        <button id="save" class="save-btn">保存头像</button>
+      </div>
+      <div id="show" class="show">
+        <div class="show__inner">
+          <img
+            src=""
+            id="composite-avatar"
+            class="composite-avatar"
+            alt="composite avatar"
+          />
+          <button id="cancel" class="cancel-btn">×</button>
+        </div>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
