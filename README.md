@@ -8,6 +8,8 @@ Some demos to delve into front-end.
 
 - [promise](https://github.com/huxinsen/front-end-learning/tree/promise)
 
-- [vue-reactivity-simple](https://github.com/huxinsen/vue-learning/tree/vue-reactivity-simple)
+- [vue-reactivity-simple](https://github.com/huxinsen/front-end-learning/tree/vue-reactivity-simple)
 
-- [vuex-simple](https://github.com/huxinsen/vue-learning/tree/vuex-simple)
+- [vuex-simple](https://github.com/huxinsen/front-end-learning/tree/vuex-simple)
+
+- [vue-router-simple](https://github.com/huxinsen/front-end-learning/tree/vue-router-simple)
