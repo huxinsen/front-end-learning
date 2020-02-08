@@ -13,3 +13,5 @@ Some demos to delve into front-end.
 - [vuex-simple](https://github.com/huxinsen/front-end-learning/tree/vuex-simple)
 
 - [vue-router-simple](https://github.com/huxinsen/front-end-learning/tree/vue-router-simple)
+
+- [principles-and-implementations](https://github.com/huxinsen/front-end-learning/tree/principles-and-implementations)
