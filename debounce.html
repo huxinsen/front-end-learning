@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Debounce demo</title>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <script>
+      // 函数防抖: 任务频繁触发的情况下，只有任务触发的间隔超过指定间隔的时候，任务才会执行。
+      // 通过闭包设置一个标记，来保存 setTimeout 返回的值，
+      // 每当用户输入的时候把前一个 setTimeout clear 掉，
+      // 然后又创建一个新的 setTimeout，这样能保证输入字符后的 interval 间隔内，
+      // 如果还有字符输入的话，就不会执行 fn 函数了。
+      function debounce(fn, interval = 300) {
+        let timer = null
+        return function() {
+          clearTimeout(timer)
+          timer = setTimeout(() => {
+            fn.apply(this, arguments)
+          }, interval)
+        }
+      }
+
+      let input = document.getElementById('input')
+      let fn = debounce(e => {
+        console.log('防抖：', e.target.value)
+      }, 2000)
+      let fnNoDebounce = e => {
+        console.log('无防抖：', e.target.value)
+      }
+      input.addEventListener('input', fn)
+    </script>
+  </body>
+</html>

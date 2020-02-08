@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Throttle demo</title>
+    <style>
+      section {
+        height: 100vh;
+      }
+      .red {
+        background-color: red;
+      }
+      .orange {
+        background-color: orange;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+      .green {
+        background-color: green;
+      }
+      .cyan {
+        background-color: cyan;
+      }
+      .blue {
+        background-color: blue;
+      }
+      .purple {
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="red"></section>
+      <section class="orange"></section>
+      <section class="yellow"></section>
+      <section class="green"></section>
+      <section class="cyan"></section>
+      <section class="blue"></section>
+      <section class="purple"></section>
+    </main>
+    <script>
+      // 函数节流: 指定时间间隔内只会执行一次任务。
+      // 通过闭包保存一个标记（canRun = true），在函数的开头判断这个标记是否为 true，
+      // 如果为 true 的话就继续执行函数，否则则 return 掉，判断完标记后立即把这个标记设为 false，
+      // 然后把外部传入的函数的执行包在一个 setTimeout 中，最后在 setTimeout 执行完毕后再把标记设置为 true（这里很关键），
+      // 表示可以执行下一次的循环了。当 setTimeout 还未执行的时候，canRun 这个标记始终为 false，在开头的判断中被 return 掉。
+      function throttle(fn, interval = 300) {
+        let canRun = true
+        return function() {
+          if (!canRun) return
+          canRun = false
+          setTimeout(() => {
+            fn.apply(this, arguments)
+            canRun = true
+          }, interval)
+        }
+      }
+
+      window.onscroll = throttle(fn)
+
+      // 判断是否滚动到底部的逻辑
+      function fn() {
+        console.log('scroll')
+        const pageHeight = getDocumentPort().height,
+          scrollTop =
+            window.pageYOffset ||
+            document.documentElement.scrollTop ||
+            document.body.scrollTop,
+          winHeight = getViewPort().height,
+          thresold = pageHeight - scrollTop - winHeight
+        if (thresold > -100 && thresold <= 20) {
+          console.log('PageEnd')
+        }
+      }
+
+      // 获得视口的大小，部分移动设备浏览器对innerWidth的兼容性不好，需要
+      // document.documentElement.clientWidth或者document.body.clientWidth
+      // 来兼容（混杂模式下对document.documentElement.clientWidth不支持）。
+      // 使用方法：getViewPort().width
+      function getViewPort() {
+        if (document.compatMode == 'BackCompat') {
+          //浏览器嗅探，混杂模式
+          return {
+            width: document.body.clientWidth,
+            height: document.body.clientHeight,
+          }
+        } else {
+          return {
+            width: document.documentElement.clientWidth,
+            height: document.documentElement.clientHeight,
+          }
+        }
+      }
+      // 获得文档的大小（区别于视口），与上面获取视口大小的方法如出一辙
+      function getDocumentPort() {
+        if (document.compatMode == 'BackCompat') {
+          return {
+            width: document.body.scrollWidth,
+            height: document.body.scrollHeight,
+          }
+        } else {
+          return {
+            width: Math.max(
+              document.documentElement.scrollWidth,
+              document.documentElement.clientWidth
+            ),
+            height: Math.max(
+              document.documentElement.scrollHeight,
+              document.documentElement.clientHeight
+            ),
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
