@@ -1,0 +1,20 @@
+{
+  "name": "vue-virtual-dom",
+  "version": "1.0.0",
+  "description": "vue virtual dom and dom diff algorithm",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=production --config ./webpack.config.js",
+    "dev": "webpack-dev-server --mode=development --contentBase=./dist --inline --config ./webpack.config.js"
+  },
+  "author": "huxinsen",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^3.2.0"
+  }
+}
